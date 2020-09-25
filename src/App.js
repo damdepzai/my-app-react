@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Step from './views/Steps';
+import Step from './components/Steps';
 
 function App() {
   const [currentStep, currentSetStep] = useState(1);
@@ -11,15 +11,15 @@ function App() {
       category:[
         {
           value:1,
-          name:'breakfast'
+          name:'Breakfast'
         },
         {
           value:2,
-          name:'lunch'
+          name:'Lunch'
         },
         {
           value:3,
-          name:'dinner'
+          name:'Dinner'
         }
       ],
       data: {
@@ -55,6 +55,24 @@ function App() {
     {
        name: 'Step 3',
        number: 3,
+       dish:[
+        {
+          value:1,
+          name:'Fish'
+        },
+        {
+          value:2,
+          name:'chicken'
+        },
+        {
+          value:3,
+          name:'pig'
+        },
+        {
+          value:4,
+          name:'tigers'
+        },
+       ],
        data:{
 
        }
