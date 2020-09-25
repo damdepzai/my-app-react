@@ -3,15 +3,11 @@ import Step1 from './Step1.js'
 import Step2 from './Step2.js'
 import Step3 from './Step3.js'
 import Preview from './Preview'
-import { useForm } from "react-hook-form";
 
 
 const Step = ({step, setStep, totalStep,setTotalStep}) => {
 
-    const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => {
-        console.log(data)
-    };
+
     const renderStepper = () => {
         return (
             totalStep.map((item, key) => (
@@ -27,10 +23,10 @@ const Step = ({step, setStep, totalStep,setTotalStep}) => {
     const renderViewStep = () =>{
         return (
             <div>
-                {step == 1 ? <Step1 setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Step1> : ''}
-                {step == 2 ? <Step2 setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Step2> : ''}
-                {step == 3 ? <Step3 setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Step3> : ''}
-                {step == 4 ? <Preview setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Preview> : ''}
+                {step === 1 ? <Step1 setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Step1> : ''}
+                {step === 2 ? <Step2 setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Step2> : ''}
+                {step === 3 ? <Step3 setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Step3> : ''}
+                {step === 4 ? <Preview setStep={setStep} totalStep={totalStep} setTotalStep={setTotalStep}></Preview> : ''}
 
             </div>
         )
@@ -51,7 +47,7 @@ const Step = ({step, setStep, totalStep,setTotalStep}) => {
     useEffect(() => {
         renderStepper()
     }, [step])
-    let buttonPre;
+    var buttonPre;
     if (step >1) {
         buttonPre = <button className="btn" onClick={pre}>
              Pre <span className="badge badge-primary"></span>
@@ -75,14 +71,10 @@ const Step = ({step, setStep, totalStep,setTotalStep}) => {
                         {renderStepper()}
                     </ul>
                 </div>
-                <form className="col-md-7 m-auto " onSubmit={handleSubmit(onSubmit)}>
+                <form className="col-md-7 m-auto " >
                     <div >
                         <div className="container">
                             {renderViewStep()}
-                        </div>
-                        <div className="md-6  m-auto">
-                                {/* {buttonPre}
-                                {buttonNext} */}
                         </div>
                     </div>
                      
@@ -91,6 +83,5 @@ const Step = ({step, setStep, totalStep,setTotalStep}) => {
      
     )
 }
-
 
 export default Step
